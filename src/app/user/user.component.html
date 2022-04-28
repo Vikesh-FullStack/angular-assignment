@@ -1,0 +1,23 @@
+<div class="main-container">
+  <div class="list-wrapper" *ngIf="isLoading">
+    <ul class="list">
+      <li>Loading data...</li>
+    </ul>
+  </div>
+  <div class="list-wrapper" *ngIf="!isLoading && !usersList?.length">
+    <ul class="list">
+      <li>No Data found!</li>
+    </ul>
+  </div>
+  <div class="list-wrapper" *ngIf="!isLoading && usersList?.length">
+    <ul class="list">
+      <li *ngFor="let user of usersList" class="list-item" (click)="onUserDetail(user)">
+        <div class="list-item-content">
+          <h4>{{user['name']}}</h4>
+          <p>{{user['username']}}</p>
+          <p>{{user['email']}}</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
